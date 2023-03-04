@@ -1,34 +1,76 @@
-<!DOCTYPE html>
-<html>
-<body>
-
-<p><b>This text is bold</b></p>
-<p><i>This text is italic</i></p>
-<p>This is<sub> subscript</sub> and <sup>superscript</sup></p>
-<p> سلام من </p>
-<p> من </p>
-<div style=”width: 25%; height: 50px; overflow: auto;
- scrollbar-face-color: #CE7E00;
- scrollbar-shadow-color: #FFFFFF;
- scrollbar-highlight-color: #6F4709;
- scrollbar-3dlight-color:#11111;
- scrollbar-darkshadow-color: #6F4709;
- scrollbar-track-color: #FFE8C1;
- scrollbar-arrow-color: #6F4709;
- ”>
- Your text will show here. And you can scroll down to go through all of it.
- You just have to add a sufficient amount of text to make the scrollbars show.
- Obviously, this is not enough,o let’s assume we have a little more to say.
- Eventually, the scrollbars will come in handy. 
-That’s itYour text will show here. And you can scroll down to go through all of it.
- You just have to add a sufficient amount of text to make the scrollbars show.
- Obviously, this is not enough,o let’s assume we have a little more to say.
- Eventually, the scrollbars will come in handy. 
-Your text will show here. And you can scroll down to go through all of it.
- You just have to add a sufficient amount of text to make the scrollbars show.
- Obviously, this is not enough,o let’s assume we have a little more to say.
- Eventually, the scrollbars will come in handy. 
- </div>
-</body>
-</html>
-
+<style type=”text/css”>
+.menutitle{
+cursor:pointer;
+margin-bottom: 5px;
+background-color:#ECECFF;
+color:#000000;
+width:140px;
+padding:2px;
+text-align:center;
+font-weight:bold;
+/*/*/border:1px solid #000000;/* */
+}.submenu{
+margin-bottom: 0.5em;
+}
+</style><script type=”text/javascript”>/***********************************************
+* Switch Menu script- by Martial B of http://getElementById.com/
+* Modified by Dynamic Drive for format & NS4/IE4 compatibility
+* Visit http://www.dynamicdrive.com/ for full source code
+***********************************************/var persistmenu=”yes” // at 1 (id=”sub1″, id=”sub2″, etc)
+var persisttype=”sitewide” //oss site, “local” for this page onlyif (document.getElementById){ //DynamicDrive.com change
+document.write(‘<style type=”text/css”>n’)
+document.write(‘.submenu{display: none;}n’)
+document.write(‘</style>n’)
+}function SwitchMenu(obj){
+if(document.getElementById){
+var el = document.getElementById(obj);
+var ar = document.getElementById(“masterdiv”).getElementsByTagName(“span”); //DynamicDrive.com change
+if(el.style.display != “block”){ //DynamicDrive.com change
+for (var i=0; i<ar.length; i++){
+if (ar[i].className==”submenu”) //DynamicDrive.com change
+ar[i].style.display = “none”;
+}
+el.style.display = “block”;
+}else{
+el.style.display = “none”;
+}
+}
+}function get_cookie(Name) {
+var search = Name + “=”
+var returnvalue = “”;
+if (document.cookie.length > 0) {
+offset = document.cookie.indexOf(search)
+if (offset != -1) {
+offset += search.length
+end = document.cookie.indexOf(“;”, offset);
+if (end == -1) end = document.cookie.length;
+returnvalue=unescape(document.cookie.substring(offset, end))
+}
+}
+return returnvalue;
+}function onloadfunction(){
+if (persistmenu==”yes”){
+var cookiename=(persisttype==”sitewide”)? “switchmenu” : window.location.pathname
+var cookievalue=get_cookie(cookiename)
+if (cookievalue!=””)
+document.getElementById(cookievalue).style.display=”block”
+}
+}function savemenustate(){
+var inc=1, blockid=””
+while (document.getElementById(“sub”+inc)){
+if (document.getElementById(“sub”+inc).style.display==”block”){
+blockid=”sub”+inc
+break
+}
+inc++
+}
+var cookiename=(persisttype==”sitewide”)? “switchmenu” : window.location.pathname
+var cookievalue=(persisttype==”sitewide”)? blockid+”;path=/” : blockid
+document.cookie=cookiename+”=”+cookievalue
+}if (window.addEventListener)
+window.addEventListener(“load”, onloadfunction, false)
+else if (window.attachEvent)
+window.attachEvent(“onload”, onloadfunction)
+else if (document.getElementById)
+window.onload=onloadfunctionif (persistmenu==”yes” && document.getElementById)
+window.onunload=savemenustate</script>
